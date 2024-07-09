@@ -1,19 +1,14 @@
+import SectionTitle from "../shared/SectionTitle";
+
 const Gallery = () => {
   return (
-    <div>
-      <div className="section_header p-10 text-center my-10">
-        <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-6xl ">
-          Unveil
-          <mark className="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">
-            Greenery
-          </mark>
-          in Your Space
-        </h1>
-        <p className="text-lg w-1/2 mx-auto font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-          Here at Flowbite we focus on markets where technology, innovation, and
-          capital can unlock long-term value and drive economic growth.
-        </p>
-      </div>
+    <div className="py-24">
+      <SectionTitle
+        firstText="Unveil "
+        highlightText="Greenery "
+        lastText="in Your Space"
+        detailsText="Discover a curated selection of vibrant trees that bring natural beauty and serenity to your surroundings"
+      />
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="grid gap-4">

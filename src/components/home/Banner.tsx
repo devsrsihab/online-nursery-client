@@ -1,6 +1,6 @@
 const Banner = () => {
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-white pb-24">
       <div className="mx-auto max-w-7xl">
         <div className="relative z-10 lg:w-full lg:max-w-2xl">
           <svg

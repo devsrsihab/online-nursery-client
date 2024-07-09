@@ -8,3 +8,13 @@ export type TProduct = {
   imageAlt: string;
   href: string;
 };
+export type TSectionTitleProps = {
+  firstText: string;
+  highlightText: string;
+  lastText: string;
+  detailsText: string;
+};
+
+export type TStateBooleanProps = 
+  { isOpenMenu: boolean, setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>}
+

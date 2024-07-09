@@ -1,4 +1,5 @@
 import { TProduct } from "../../../types";
+import SectionTitle from "../../shared/SectionTitle";
 import Product from "./Product";
 
 const products: TProduct[] = [
@@ -51,8 +52,14 @@ const products: TProduct[] = [
 
 const Products = () => {
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-7xl overflow-hidden sm:px-6 lg:px-8">
+    <div className="bg-white py-24">
+      <SectionTitle
+        firstText="Discover"
+        highlightText="Nature's"
+        lastText="Canvas"
+        detailsText="Enhance your environment with majestic trees that serve as living canvases of natural elegance"
+      />
+      <div className="mx-auto max-w-full overflow-hidden ">
         <h2 className="sr-only">Products</h2>
 
         <div className="-mx-px grid grid-cols-2 border-l border-gray-200 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">

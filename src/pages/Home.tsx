@@ -1,7 +1,13 @@
-import Example from "../components/home/Banner";
+import Banner from "../components/home/Banner";
+import Products from "../components/home/Product/Products";
 
 const Home = () => {
-  return <Example />;
+  return (
+    <>
+      <Banner />
+      <Products />
+    </>
+  );
 };
 
 export default Home;

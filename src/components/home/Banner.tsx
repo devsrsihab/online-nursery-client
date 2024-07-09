@@ -1,4 +1,4 @@
-export default function Example() {
+const Banner = () => {
   return (
     <div className="relative bg-white">
       <div className="mx-auto max-w-7xl">
@@ -61,4 +61,6 @@ export default function Example() {
       </div>
     </div>
   );
-}
+};
+
+export default Banner;

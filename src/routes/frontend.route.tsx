@@ -2,8 +2,8 @@ import Home from "../pages/Home";
 
 export const fronendPaths = [
   {
-    name: "Home",
-    path: "",
+    name: "Root",
+    path: "/",
     element: <Home />,
   },
 ];

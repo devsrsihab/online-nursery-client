@@ -1,54 +1,55 @@
-import { MegaphoneIcon, XMarkIcon } from "@heroicons/react/24/outline";
-
 export default function Footer() {
   return (
     <>
-      {/*
-        Make sure you add some bottom padding to pages that include a sticky banner like this to prevent
-        your content from being obscured when the user scrolls to the bottom of the page.
-      */}
-      <div className="fixed inset-x-0 bottom-0">
-        <div className="bg-indigo-600">
-          <div className="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap items-center justify-between">
-              <div className="flex w-0 flex-1 items-center">
-                <span className="flex rounded-lg bg-indigo-800 p-2">
-                  <MegaphoneIcon
-                    className="h-6 w-6 text-white"
-                    aria-hidden="true"
-                  />
-                </span>
-                <p className="ml-3 truncate font-medium text-white">
-                  <span className="md:hidden">We announced a new product!</span>
-                  <span className="hidden md:inline">
-                    Big news! We're excited to announce a brand new product.
-                  </span>
-                </p>
-              </div>
-              <div className="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
-                <a
-                  href="#"
-                  className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50"
-                >
-                  Learn more
+      <footer className="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <a
+              href="https://flowbite.com/"
+              className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+            >
+              <img
+                src="https://flowbite.com/docs/images/logo.svg"
+                className="h-8"
+                alt="Flowbite Logo"
+              />
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                Flowbite
+              </span>
+            </a>
+            <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+              <li>
+                <a href="#" className="hover:underline me-4 md:me-6">
+                  About
                 </a>
-              </div>
-              <div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-                <button
-                  type="button"
-                  className="-mr-1 flex rounded-md p-2 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
-                >
-                  <span className="sr-only">Dismiss</span>
-                  <XMarkIcon
-                    className="h-6 w-6 text-white"
-                    aria-hidden="true"
-                  />
-                </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <a href="#" className="hover:underline me-4 md:me-6">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline me-4 md:me-6">
+                  Licensing
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:underline">
+                  Contact
+                </a>
+              </li>
+            </ul>
           </div>
+          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            © 2023{" "}
+            <a href="https://flowbite.com/" className="hover:underline">
+              Flowbite™
+            </a>
+            . All Rights Reserved.
+          </span>
         </div>
-      </div>
+      </footer>
     </>
   );
 }

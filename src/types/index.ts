@@ -1,1 +1,1 @@
-export * from './sidebar.type'
+export * from "./website.type";

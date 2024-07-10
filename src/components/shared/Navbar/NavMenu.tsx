@@ -1,7 +1,11 @@
 import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import Cart from "./Cart";
+import { GrCart } from "react-icons/gr";
+import { useState } from "react";
 
 const NavMenu = ({ isOpenMenu }: { isOpenMenu: boolean }) => {
+  const [open, setOpen] = useState(false);
   return (
     <>
       <div className="hidden w-full md:block md:w-auto" id="navbar-default">
@@ -23,27 +27,12 @@ const NavMenu = ({ isOpenMenu }: { isOpenMenu: boolean }) => {
             </Link>
           </li>
           <li>
-            <a
-              href="#"
-              className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-            >
-              Pricing
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-            >
-              Contact
+            <a className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+              <button onClick={() => setOpen(true)}>
+                <GrCart />
+              </button>
+
+              <Cart open={open} setOpen={setOpen} />
             </a>
           </li>
         </ul>

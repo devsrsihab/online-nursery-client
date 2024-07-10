@@ -15,6 +15,12 @@ export type TSectionTitleProps = {
   detailsText: string;
 };
 
-export type TStateBooleanProps = 
-  { isOpenMenu: boolean, setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>}
+export type TStateBooleanProps = {
+  isOpenMenu: boolean;
+  setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
+export type TOpenProps = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};

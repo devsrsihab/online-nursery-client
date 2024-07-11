@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Logo = () => {
   return (
     <Link
-      to="https://flowbite.com/"
+      to="/"
       className="flex items-center space-x-3 rtl:space-x-reverse"
     >
       <img

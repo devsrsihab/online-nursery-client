@@ -1,5 +1,7 @@
 import { TProduct } from "../../../types";
+import Pagination from "../../shared/Pagination";
 import SectionTitle from "../../shared/SectionTitle";
+import ProductSearchAndFilter from "../ProductSearchAndFilter";
 import Product from "./Product";
 
 const products: TProduct[] = [
@@ -59,6 +61,7 @@ const Products = () => {
         lastText="Canvas"
         detailsText="Enhance your environment with majestic trees that serve as living canvases of natural elegance"
       />
+      <ProductSearchAndFilter />
       <div className="mx-auto max-w-full overflow-hidden ">
         <h2 className="sr-only">Products</h2>
 
@@ -66,6 +69,9 @@ const Products = () => {
           {products.map((product, index) => (
             <Product key={index} product={product} />
           ))}
+        </div>
+        <div className="flex justify-center">
+          <Pagination />
         </div>
       </div>
     </div>

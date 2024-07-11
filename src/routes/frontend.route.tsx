@@ -1,6 +1,7 @@
 import CartPage from "../pages/CartPage ";
 import Checkout from "../pages/Checkout";
 import Home from "../pages/Home";
+import ProductDetails from "../pages/ProductDetails";
 import Shop from "../pages/Shop";
 
 export const fronendPaths = [
@@ -23,5 +24,10 @@ export const fronendPaths = [
     name: "Checkout",
     path: "/checkout",
     element: <Checkout />,
+  },
+  {
+    name: "Product Details",
+    path: "/products/:id",
+    element: <ProductDetails />,
   },
 ];

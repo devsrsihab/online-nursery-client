@@ -36,9 +36,12 @@ const products = [
   // More products...
 ];
 
-export default function Cart({ open, setOpen }: TOpenProps) {
+export default function Cart({
+  openCart,
+  setOpenCart,
+}: TOpenProps<"openCart">) {
   return (
-    <Dialog open={open} onClose={setOpen} className="relative z-10">
+    <Dialog open={openCart} onClose={setOpenCart} className="relative z-10">
       <DialogBackdrop
         transition
         className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
@@ -60,7 +63,7 @@ export default function Cart({ open, setOpen }: TOpenProps) {
                     <div className="ml-3 flex h-7 items-center">
                       <button
                         type="button"
-                        onClick={() => setOpen(false)}
+                        onClick={() => setOpenCart(false)}
                         className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
                       >
                         <span className="absolute -inset-0.5" />
@@ -131,7 +134,7 @@ export default function Cart({ open, setOpen }: TOpenProps) {
                   <div className="mt-6">
                     <Link
                       to="/checkout"
-                      onClick={() => setOpen(false)}
+                      onClick={() => setOpenCart(false)}
                       className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                     >
                       Checkout
@@ -141,7 +144,7 @@ export default function Cart({ open, setOpen }: TOpenProps) {
                     <p>
                       <Link
                         to="/carts"
-                        onClick={() => setOpen(false)}
+                        onClick={() => setOpenCart(false)}
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
                         See All Carts

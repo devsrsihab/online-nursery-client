@@ -20,7 +20,8 @@ export type TStateBooleanProps = {
   setIsOpenMenu: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export type TOpenProps = {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+export type TOpenProps<K extends string> = {
+  [key in K]: boolean;
+} & {
+  [key in `set${Capitalize<K>}`]: React.Dispatch<React.SetStateAction<boolean>>;
 };

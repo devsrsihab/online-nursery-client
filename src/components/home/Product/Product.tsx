@@ -4,7 +4,7 @@ const Product = ({ product }: { product: TProduct }) => {
   const { id, name, price, rating, href, imageSrc } = product;
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl py-3 px-3 sm:py-6 sm:px-6 lg:max-w-7xl lg:px-8">
           <div key={id}>
             <div className="relative">
               <div className="relative h-72 w-full overflow-hidden rounded-lg">

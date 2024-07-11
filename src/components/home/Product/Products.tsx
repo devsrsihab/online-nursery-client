@@ -17,6 +17,28 @@ const products: TProduct[] = [
     href: "#",
   },
   {
+    id: 1,
+    name: "Organize Basic Set (Walnut)",
+    price: "$149",
+    rating: 2.5,
+    reviewCount: 38,
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/category-page-05-image-card-01.jpg",
+    imageAlt: "TODO",
+    href: "#",
+  },
+  {
+    id: 1,
+    name: "Organize Basic Set (Walnut)",
+    price: "$149",
+    rating: 2.5,
+    reviewCount: 38,
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/category-page-05-image-card-01.jpg",
+    imageAlt: "TODO",
+    href: "#",
+  },
+  {
     id: 2,
     name: "Organize Pen Holder",
     price: "$15",
@@ -65,7 +87,7 @@ const Products = () => {
       <div className="mx-auto max-w-full overflow-hidden ">
         <h2 className="sr-only">Products</h2>
 
-        <div className="-mx-px grid grid-cols-2 border-l border-gray-200 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 border-l border-gray-200 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
           {products.map((product, index) => (
             <Product key={index} product={product} />
           ))}

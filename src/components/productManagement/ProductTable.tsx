@@ -3,6 +3,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { useState } from "react";
 import ProductCreateForm from "./ProductCreateForm";
+import ProductEditForm from "./ProductEditForm";
 
 const people = [
   {
@@ -17,6 +18,7 @@ const people = [
 const ProductTable = () => {
   const [confirmDeleteModal, setConfirmDeleteModal] = useState(false);
   const [openForm, setOpenForm] = useState(false);
+  const [openEditForm, setOpenEditForm] = useState(false);
   return (
     <div className="bg-[#f3f4f6] px-4 py-12 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
       {/* confirmation delete modal */}
@@ -26,6 +28,10 @@ const ProductTable = () => {
       />
       {/* Create modal */}
       <ProductCreateForm openForm={openForm} setOpenForm={setOpenForm} />
+      <ProductEditForm
+        openEditForm={openEditForm}
+        setOpenEditForm={setOpenEditForm}
+      />
 
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
@@ -102,7 +108,10 @@ const ProductTable = () => {
                         {person.role}
                       </td>
                       <td className="flex gap-3 relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <button className="text-green-600 text-xl hover:text-green-900">
+                        <button
+                          onClick={() => setOpenEditForm(true)}
+                          className="text-green-600 text-xl hover:text-green-900"
+                        >
                           <BsPencilSquare />
                         </button>
                         <button className="text-xl text-black hover:text-black/30">

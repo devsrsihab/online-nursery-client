@@ -3,13 +3,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { TOpenProps } from "../../types";
 
-const ProductCreateForm = ({
-  openForm,
-  setOpenForm,
-}: TOpenProps<"openForm">) => {
+const ProductEditForm = ({
+  openEditForm,
+  setOpenEditForm,
+}: TOpenProps<"openEditForm">) => {
   return (
-    <Transition.Root show={openForm} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpenForm}>
+    <Transition.Root show={openEditForm} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={setOpenEditForm}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-200"
@@ -46,7 +46,7 @@ const ProductCreateForm = ({
                       as="h3"
                       className="text-lg font-medium leading-6 text-gray-900"
                     >
-                      Create product
+                      Edit Product
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
@@ -60,14 +60,14 @@ const ProductCreateForm = ({
                   <button
                     type="button"
                     className="inline-flex justify-center w-full sm:w-auto rounded-md border border-transparent bg-red-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={() => setOpenForm(false)}
+                    onClick={() => setOpenEditForm(false)}
                   >
                     Cancel
                   </button>
                   <button
                     type="button"
                     className="inline-flex justify-center w-full sm:w-auto rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={() => setOpenForm(false)}
+                    onClick={() => setOpenEditForm(false)}
                   >
                     Create
                   </button>
@@ -80,4 +80,4 @@ const ProductCreateForm = ({
     </Transition.Root>
   );
 };
-export default ProductCreateForm;
+export default ProductEditForm;

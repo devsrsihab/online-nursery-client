@@ -4,16 +4,13 @@ const Logo = () => {
   return (
     <Link
       to="/"
-      className="flex items-center space-x-3 rtl:space-x-reverse"
+      className="m-w-[180px]  z-[100] m-h-[70px] flex items-center space-x-3 rtl:space-x-reverse"
     >
       <img
-        src="https://flowbite.com/docs/images/logo.svg"
-        className="h-8"
-        alt="Flowbite Logo"
+        src="https://i.ibb.co/6nmZ2c1/logo.png"
+        className="w-full h-full"
+        alt="srnursery-logo"
       />
-      <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-        Flowbite
-      </span>
     </Link>
   );
 };

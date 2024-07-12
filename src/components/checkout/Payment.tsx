@@ -1,11 +1,9 @@
 const Payment = () => {
   return (
     <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-        Payment
-      </h3>
+      <h3 className="text-xl font-semibold text-gray-900">Payment</h3>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4">
           <div className="flex items-start">
             <div className="flex h-5 items-center">
               <input
@@ -14,21 +12,21 @@ const Payment = () => {
                 type="radio"
                 name="payment-method"
                 defaultValue=""
-                className="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                className="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600"
                 defaultChecked={true}
               />
             </div>
             <div className="ms-4 text-sm">
               <label
                 htmlFor="credit-card"
-                className="font-medium leading-none text-gray-900 dark:text-white"
+                className="font-medium leading-none text-gray-900"
               >
                 {" "}
                 Credit Card{" "}
               </label>
               <p
                 id="credit-card-text"
-                className="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400"
+                className="mt-1 text-xs font-normal text-gray-500"
               >
                 Pay with your credit card
               </p>
@@ -37,20 +35,21 @@ const Payment = () => {
           <div className="mt-4 flex items-center gap-2">
             <button
               type="button"
-              className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-sm font-medium text-gray-500 hover:text-gray-900"
             >
               Delete
             </button>
-            <div className="h-3 w-px shrink-0 bg-gray-200 dark:bg-gray-700" />
+            <div className="h-3 w-px shrink-0 bg-gray-200" />
             <button
               type="button"
-              className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-sm font-medium text-gray-500 hover:text-gray-900"
             >
               Edit
             </button>
           </div>
         </div>
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+
+        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4">
           <div className="flex items-start">
             <div className="flex h-5 items-center">
               <input
@@ -59,20 +58,20 @@ const Payment = () => {
                 type="radio"
                 name="payment-method"
                 defaultValue=""
-                className="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                className="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600"
               />
             </div>
             <div className="ms-4 text-sm">
               <label
                 htmlFor="pay-on-delivery"
-                className="font-medium leading-none text-gray-900 dark:text-white"
+                className="font-medium leading-none text-gray-900"
               >
                 {" "}
                 Payment on delivery{" "}
               </label>
               <p
                 id="pay-on-delivery-text"
-                className="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400"
+                className="mt-1 text-xs font-normal text-gray-500"
               >
                 +$15 payment processing fee
               </p>
@@ -81,20 +80,20 @@ const Payment = () => {
           <div className="mt-4 flex items-center gap-2">
             <button
               type="button"
-              className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-sm font-medium text-gray-500 hover:text-gray-900"
             >
               Delete
             </button>
-            <div className="h-3 w-px shrink-0 bg-gray-200 dark:bg-gray-700" />
+            <div className="h-3 w-px shrink-0 bg-gray-200" />
             <button
               type="button"
-              className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-sm font-medium text-gray-500 hover:text-gray-900"
             >
               Edit
             </button>
           </div>
         </div>
-        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4 dark:border-gray-700 dark:bg-gray-800">
+        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 ps-4">
           <div className="flex items-start">
             <div className="flex h-5 items-center">
               <input
@@ -103,20 +102,20 @@ const Payment = () => {
                 type="radio"
                 name="payment-method"
                 defaultValue=""
-                className="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                className="h-4 w-4 border-gray-300 bg-white text-primary-600 focus:ring-2 focus:ring-primary-600"
               />
             </div>
             <div className="ms-4 text-sm">
               <label
                 htmlFor="paypal-2"
-                className="font-medium leading-none text-gray-900 dark:text-white"
+                className="font-medium leading-none text-gray-900"
               >
                 {" "}
                 Paypal account{" "}
               </label>
               <p
                 id="paypal-text"
-                className="mt-1 text-xs font-normal text-gray-500 dark:text-gray-400"
+                className="mt-1 text-xs font-normal text-gray-500"
               >
                 Connect to your account
               </p>
@@ -125,14 +124,14 @@ const Payment = () => {
           <div className="mt-4 flex items-center gap-2">
             <button
               type="button"
-              className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-sm font-medium text-gray-500 hover:text-gray-900"
             >
               Delete
             </button>
-            <div className="h-3 w-px shrink-0 bg-gray-200 dark:bg-gray-700" />
+            <div className="h-3 w-px shrink-0 bg-gray-200" />
             <button
               type="button"
-              className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-sm font-medium text-gray-500 hover:text-gray-900"
             >
               Edit
             </button>

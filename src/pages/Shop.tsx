@@ -1,7 +1,7 @@
-import Example from "../components/shop/ShopFilter";
+import ShopFilter from "../components/shop/ShopFilter";
 
 const Shop = () => {
-  return <Example />;
+  return <ShopFilter />;
 };
 
 export default Shop;

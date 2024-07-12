@@ -86,7 +86,7 @@ const products: TProduct[] = [
   // More products...
 ];
 
-export default function Example() {
+export default function ShopFilter() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
@@ -281,8 +281,8 @@ export default function Example() {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
-                <div className="h-96 flex justify-center items-center rounded-lg border-4 border-dashed border-gray-200 lg:h-full">
-                  <div className="-mx-px grid grid-cols-2 border-l border-gray-200 sm:mx-0 md:grid-cols-3 ">
+                <div className="h-auto overflow-hidden flex justify-center items-center rounded-lg border-4 border-dashed border-gray-200 lg:h-full">
+                  <div className="h-full grid grid-cols-2 sm:grid-cols-3 border-l border-gray-200 sm:mx-0 lg:grid-cols-3 ">
                     {products.map((product, index) => (
                       <Product key={index} product={product} />
                     ))}

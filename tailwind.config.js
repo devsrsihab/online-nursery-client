@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         primary: "#81ba00",
+        primary600: "#74a700",
       },
       fontFamily: {
         primary: ["Helvetica", "Arial", "sans-serif"],

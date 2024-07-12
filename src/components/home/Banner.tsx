@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Banner = () => {
   return (
     <div className="relative bg-white pb-24">
@@ -14,38 +16,27 @@ const Banner = () => {
 
           <div className="relative py-32 px-6 sm:py-40 lg:py-56 lg:px-8 lg:pr-0">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-              <div className="hidden sm:mb-10 sm:flex">
-                <div className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                  Anim aute id magna aliqua ad ad non deserunt sunt.{" "}
-                  <a
-                    href="#"
-                    className="whitespace-nowrap font-semibold text-indigo-600"
-                  >
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    Read more <span aria-hidden="true">&rarr;</span>
-                  </a>
-                </div>
-              </div>
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Data to enrich your online business
+                Transform Your Space with Our Beautiful Trees
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                fugiat aliqua.
+                Discover a variety of trees and plants to enhance your garden or
+                landscape. Our nursery offers the highest quality plants, expert
+                advice, and exceptional service to help you create your dream
+                outdoor space.
               </p>
               <div className="mt-10 flex items-center gap-x-6">
-                <a
-                  href="#"
-                  className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                <Link
+                  to="/shop"
+                  className="rounded-md bg-primary px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-primary600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Get started
-                </a>
+                  Shop Now
+                </Link>
                 <a
-                  href="#"
+                  href="#categoriesSection"
                   className="text-base font-semibold leading-7 text-gray-900"
                 >
-                  Learn more <span aria-hidden="true">→</span>
+                  See Categories <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
@@ -55,7 +46,7 @@ const Banner = () => {
       <div className="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <img
           className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
-          src="https://www.thetreecenter.com/wp-content/themes/ttc/assets/img/homepage-hero-slide-1-rev-desktop.jpg"
+          src="https://i.ibb.co/5Lr0qPK/video-banner.jpg"
           alt=""
         />
       </div>

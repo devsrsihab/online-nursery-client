@@ -3,7 +3,7 @@ import Category from "./Category";
 
 const Categories = () => {
   return (
-    <div className="bg-white py-24">
+    <div id="categoriesSection" className="bg-white py-24">
       <SectionTitle
         firstText="Discover"
         highlightText="Breathtaking"

@@ -2,3 +2,6 @@
 //===========Logo and Loader==========
 https://i.ibb.co/6nmZ2c1/logo.png
 https://i.ibb.co/3SsM3t4/ajax-loader.gif
+
+============ Banner images ===========
+https://i.ibb.co/5Lr0qPK/video-banner.jpg

@@ -109,7 +109,7 @@ export default function Cart({
                                 <div className="flex">
                                   <button
                                     type="button"
-                                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                                    className="font-medium text-primary hover:text-primary600"
                                   >
                                     Remove
                                   </button>
@@ -135,7 +135,7 @@ export default function Cart({
                     <Link
                       to="/checkout"
                       onClick={() => setOpenCart(false)}
-                      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                      className="flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary600"
                     >
                       Checkout
                     </Link>
@@ -145,7 +145,7 @@ export default function Cart({
                       <Link
                         to="/carts"
                         onClick={() => setOpenCart(false)}
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                        className="font-medium text-primary hover:text-primary600"
                       >
                         See All Carts
                         <span aria-hidden="true"> &rarr;</span>

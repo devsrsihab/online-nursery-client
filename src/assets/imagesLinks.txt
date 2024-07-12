@@ -2,6 +2,7 @@
 //===========Logo and Loader==========
 https://i.ibb.co/6nmZ2c1/logo.png
 https://i.ibb.co/3SsM3t4/ajax-loader.gif
+https://i.ibb.co/d7kD2Rb/footer-logo.png
 
 ============ Banner images ===========
 https://i.ibb.co/5Lr0qPK/video-banner.jpg

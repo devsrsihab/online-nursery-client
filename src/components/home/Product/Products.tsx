@@ -80,7 +80,7 @@ const Products = () => {
       <SectionTitle
         firstText="Discover"
         highlightText="Nature's"
-        lastText="Canvas"
+        lastText="Product"
         detailsText="Enhance your environment with majestic trees that serve as living canvases of natural elegance"
       />
       <ProductSearchAndFilter />

@@ -34,7 +34,7 @@ const ProductSearchAndFilter = () => {
                 <input
                   type="name"
                   name="search"
-                  className="h-12 w-full cursor-text rounded-md border border-gray-100 bg-gray-100 py-4 pr-40 pl-12 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                  className="h-12 w-full cursor-text rounded-md border border-gray-100 bg-gray-100 py-4 pr-40 pl-12 shadow-sm outline-none  focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                   placeholder="Search by name, type, manufacturer, etc"
                 />
               </div>
@@ -43,7 +43,7 @@ const ProductSearchAndFilter = () => {
               <button className="rounded-lg bg-gray-200 px-8 py-2 font-medium text-gray-700 outline-none hover:opacity-80 focus:ring">
                 Reset
               </button>
-              <button className="rounded-lg bg-blue-600 px-8 py-2 font-medium text-white outline-none hover:opacity-80 focus:ring">
+              <button className="rounded-lg bg-primary px-8 py-2 font-medium text-white outline-none hover:opacity-80 focus:ring">
                 Search
               </button>
             </div>

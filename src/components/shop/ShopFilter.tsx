@@ -90,7 +90,7 @@ export default function ShopFilter() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white py-10">
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
@@ -142,7 +142,7 @@ export default function ShopFilter() {
         <main className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              Shop Page
+              Products
             </h1>
 
             <div className="flex items-center">

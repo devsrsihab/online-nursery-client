@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <>
       <footer className="bg-white w-full rounded-lg shadow dark:bg-[#222222] my-4">
-        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div className="w-full px-8 mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center sm:justify-between">
             <Logo image="https://i.ibb.co/d7kD2Rb/footer-logo.png" />
             <ul className="flex flex-wrap items-center mb-6 text-sm font-medium transition-all duration-300  text-[#CCCCCC] sm:mb-0">

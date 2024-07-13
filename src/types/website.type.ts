@@ -1,13 +1,15 @@
 export type TProduct = {
-  id: number;
-  name: string;
-  price: string;
+  _id: string;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
   rating: number;
-  reviewCount: number;
-  imageSrc: string;
-  imageAlt: string;
-  href: string;
+  image: string;
+  brand: string;
+  stock: number;
 };
+
 export type TSectionTitleProps = {
   firstText: string;
   highlightText: string;
@@ -24,4 +26,8 @@ export type TOpenProps<K extends string> = {
   [key in K]: boolean;
 } & {
   [key in `set${Capitalize<K>}`]: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type CreateFormProps = {
+  setOpenForm: React.Dispatch<React.SetStateAction<boolean>>;
 };

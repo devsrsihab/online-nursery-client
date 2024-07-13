@@ -4,12 +4,28 @@ import {
   ExclamationTriangleIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { TOpenProps } from "../../types";
+import { useDeleteProductsMutation } from "../../redux/features/product/productApi";
+import { toast } from "sonner";
+
+interface ConfirmDeleteModalProps {
+  confirmDeleteModal: boolean;
+  setConfirmDeleteModal: (value: boolean) => void;
+  productId: string;
+}
 
 const ConfirmDeleteModal = ({
   confirmDeleteModal,
   setConfirmDeleteModal,
-}: TOpenProps<"confirmDeleteModal">) => {
+  productId,
+}: ConfirmDeleteModalProps) => {
+  const [deleteProducts] = useDeleteProductsMutation();
+
+  const handleDelete = (id: string) => {
+    deleteProducts(id);
+    setConfirmDeleteModal(false);
+    toast.success("Product has been Deleted");
+  };
+
   return (
     <Transition.Root show={confirmDeleteModal} as={Fragment}>
       <Dialog
@@ -78,7 +94,7 @@ const ConfirmDeleteModal = ({
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                    onClick={() => setConfirmDeleteModal(false)}
+                    onClick={() => handleDelete(productId)}
                   >
                     Delete
                   </button>

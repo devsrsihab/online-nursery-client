@@ -2,33 +2,38 @@ import { BsPencilSquare, BsTrash3 } from "react-icons/bs";
 import { IoEyeOutline } from "react-icons/io5";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { useState } from "react";
-import ProductCreateForm from "./ProductCreateForm";
-import ProductEditForm from "./ProductEditForm";
-
-const people = [
-  {
-    name: "Lindsay Walton",
-    title: "Front-end Developer",
-    email: "lindsay.walton@example.com",
-    role: "Member",
-  },
-  // More people...
-];
+import CreateProductModal from "./CreateProduct/CreateProductModal";
+import EditProductModal from "./EditProduct/EditProductModal";
+import { useGetAllProductsQuery } from "../../redux/features/product/productApi";
+import { TProduct } from "../../types";
+import Loader from "../shared/Loader";
 
 const ProductTable = () => {
   const [confirmDeleteModal, setConfirmDeleteModal] = useState(false);
   const [openForm, setOpenForm] = useState(false);
   const [openEditForm, setOpenEditForm] = useState(false);
+  const [productIdToDelete, setProductIdToDelete] = useState<string | null>(
+    null
+  );
+  const { data, isLoading, error } = useGetAllProductsQuery(undefined);
+  const products = data?.data ?? [];
+  // console.log(products);
+
+  if (isLoading) {
+    console.log("loading data...");
+  }
+
   return (
     <div className="bg-[#f3f4f6] px-4 py-12 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
       {/* confirmation delete modal */}
       <ConfirmDeleteModal
         confirmDeleteModal={confirmDeleteModal}
         setConfirmDeleteModal={setConfirmDeleteModal}
+        productId={productIdToDelete ? productIdToDelete : ""}
       />
       {/* Create modal */}
-      <ProductCreateForm openForm={openForm} setOpenForm={setOpenForm} />
-      <ProductEditForm
+      <CreateProductModal openForm={openForm} setOpenForm={setOpenForm} />
+      <EditProductModal
         openEditForm={openEditForm}
         setOpenEditForm={setOpenEditForm}
       />
@@ -64,68 +69,130 @@ const ProductTable = () => {
                       scope="col"
                       className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                     >
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
                       Title
                     </th>
                     <th
                       scope="col"
+                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                    >
+                      Image
+                    </th>
+
+                    <th
+                      scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Email
+                      Price
                     </th>
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Role
+                      Description
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Category
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Rating
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Brand
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Stock
                     </th>
                     <th
                       scope="col"
                       className="relative py-3.5 pl-3 pr-4 sm:pr-6"
                     >
+                      Action
                       <span className="sr-only">Edit</span>
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={person.email}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {person.name}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.title}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.email}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.role}
-                      </td>
-                      <td className="flex gap-3 relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <button
-                          onClick={() => setOpenEditForm(true)}
-                          className="text-green-600 text-xl hover:text-green-900"
-                        >
-                          <BsPencilSquare />
-                        </button>
-                        <button className="text-xl text-black hover:text-black/30">
-                          <IoEyeOutline />
-                        </button>
-                        <button
-                          onClick={() => setConfirmDeleteModal(true)}
-                          className="text-xl text-red-600 hover:text-red-900"
-                        >
-                          <BsTrash3 />
-                        </button>
+                <tbody
+                  className={`${
+                    isLoading && "animate-pulse h-24"
+                  }  relative divide-y divide-gray-200 bg-white`}
+                >
+                  {isLoading && <Loader />}
+                  {error ? (
+                    <tr>
+                      <td
+                        colSpan={9}
+                        className="text-center py-4 text-sm text-red-500"
+                      >
+                        Something Went Wrong
                       </td>
                     </tr>
-                  ))}
+                  ) : (
+                    products.map((product: TProduct, index: number) => (
+                      <tr key={index}>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                          {product.title}
+                        </td>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                          <img
+                            className="h-20 w-20"
+                            src={product.image}
+                            alt="product-img"
+                          />
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {product.price}
+                        </td>
+                        <td className="whitespace-pre-wrap px-3 py-4 text-sm text-gray-500">
+                          {product.description}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {product.category}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {product.brand}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {product.rating}
+                        </td>
+
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {product.stock}
+                        </td>
+                        <td className="flex items-center gap-3 relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                          <button
+                            onClick={() => setOpenEditForm(true)}
+                            className="text-green-600 text-xl hover:text-green-900"
+                          >
+                            <BsPencilSquare />
+                          </button>
+                          <button className="text-xl text-black hover:text-black/30">
+                            <IoEyeOutline />
+                          </button>
+                          <button
+                            onClick={() => {
+                              setConfirmDeleteModal(true);
+                              setProductIdToDelete(product._id);
+                            }}
+                            className="text-xl text-red-600 hover:text-red-900"
+                          >
+                            <BsTrash3 />
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>

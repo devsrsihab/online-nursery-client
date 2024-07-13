@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav
-      style={{ zIndex: 99999, transition: "top 0.3s" }}
+      style={{ zIndex: 100, transition: "top 0.3s" }}
       className={`bg-white border-gray-200 px-8 fixed w-full ${
         isVisible ? "top-0 right-0 left-0" : "-top-32 right-0 left-0"
       }`}

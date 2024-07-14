@@ -95,7 +95,7 @@ const Pagination = ({
                 setCurrentPage(1); // Reset to first page when item limit changes
               }}
             >
-              <option value="">Select Number of Items</option>
+              <option value="10">Select Number of Items</option>
               <option value="2">2</option>
               <option value="5">5</option>
               <option value="10">10</option>

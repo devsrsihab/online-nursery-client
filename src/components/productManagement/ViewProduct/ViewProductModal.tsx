@@ -1,7 +1,5 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { CheckIcon } from "@heroicons/react/24/outline";
-
 import { useEditProductsQuery } from "../../../redux/features/product/productApi";
 
 interface UpdateModalProps {

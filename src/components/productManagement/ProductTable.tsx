@@ -7,15 +7,14 @@ import EditProductModal from "./EditProduct/EditProductModal";
 import { useGetAllProductsQuery } from "../../redux/features/product/productApi";
 import { TProduct } from "../../types";
 import Loader from "../shared/Loader";
+import ViewProductModal from "./ViewProduct/ViewProductModal";
 
 const ProductTable = () => {
   const [confirmDeleteModal, setConfirmDeleteModal] = useState(false);
   const [openForm, setOpenForm] = useState(false);
   const [openEditForm, setOpenEditForm] = useState(false);
-  const [productIdToDelete, setProductIdToDelete] = useState<string | null>(
-    null
-  );
-  const [productIdToUpdate, setProductIdToUpdate] = useState<string | null>(
+  const [openViewForm, setOpenViewForm] = useState(false);
+  const [productId, setProductId] = useState<string | null>(
     null
   );
 
@@ -33,14 +32,19 @@ const ProductTable = () => {
       <ConfirmDeleteModal
         confirmDeleteModal={confirmDeleteModal}
         setConfirmDeleteModal={setConfirmDeleteModal}
-        productId={productIdToDelete ? productIdToDelete : ""}
+        productId={productId ? productId : ""}
       />
       {/* Create modal */}
       <CreateProductModal openForm={openForm} setOpenForm={setOpenForm} />
       <EditProductModal
         openEditForm={openEditForm}
         setOpenEditForm={setOpenEditForm}
-        productId={productIdToUpdate ? productIdToUpdate : ""}
+        productId={productId ? productId : ""}
+      />
+      <ViewProductModal
+        openViewForm={openViewForm}
+        setOpenViewForm={setOpenViewForm}
+        productId={productId ? productId : ""}
       />
 
       <div className="sm:flex sm:items-center">
@@ -179,19 +183,25 @@ const ProductTable = () => {
                           <button
                             onClick={() => {
                               setOpenEditForm(true);
-                              setProductIdToUpdate(product._id);
+                              setProductId(product._id);
                             }}
                             className="text-green-600 text-xl hover:text-green-900"
                           >
                             <BsPencilSquare />
                           </button>
-                          <button className="text-xl text-black hover:text-black/30">
+                          <button
+                            onClick={() => {
+                              setOpenViewForm(true);
+                              setProductId(product._id);
+                            }}
+                            className="text-xl text-black hover:text-black/30"
+                          >
                             <IoEyeOutline />
                           </button>
                           <button
                             onClick={() => {
                               setConfirmDeleteModal(true);
-                              setProductIdToDelete(product._id);
+                              setProductId(product._id);
                             }}
                             className="text-xl text-red-600 hover:text-red-900"
                           >

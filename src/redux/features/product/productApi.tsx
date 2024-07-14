@@ -3,10 +3,20 @@ import { baseApi } from "../../api/baseApi";
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: ({ page, limit }) => ({
-        url: `/products?page=${page}&limit=${limit}`,
-        method: "GET",
-      }),
+      query: ({ page, limit, category }) => {
+        
+        if (category) {
+          return {
+            url: `/products?page=${page}&limit=${limit}&category=${category}`,
+            method: "GET",
+          };
+        }
+
+        return {
+          url: `/products?page=${page}&limit=${limit}`,
+          method: "GET",
+        };
+      },
       providesTags: ["products"],
     }),
 

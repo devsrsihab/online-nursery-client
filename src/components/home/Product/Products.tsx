@@ -9,14 +9,16 @@ import Product from "./Product";
 const Products = () => {
   const [pagenumber, setPageNumber] = useState<number | null>(null);
   const [itemlimit, setItemlimit] = useState<number | null>(null);
+  const [category, setCategory] = useState<string | null>(null);
 
   const { data } = useGetAllProductsQuery({
     page: pagenumber,
     limit: itemlimit,
+    category,
   });
   const { products }: { products: TProduct[] } = data?.data ?? [];
   const { totalItems } = data?.data ?? 10;
-
+  console.log(products);
   return (
     <div className="bg-white py-24">
       <SectionTitle
@@ -25,13 +27,13 @@ const Products = () => {
         lastText="Product"
         detailsText="Enhance your environment with majestic trees that serve as living canvases of natural elegance"
       />
-      <ProductSearchAndFilter />
+      <ProductSearchAndFilter setCategory={setCategory} />
       <div className="mx-auto max-w-full overflow-hidden ">
         <h2 className="sr-only">Products</h2>
 
         <div className="grid grid-cols-2 border-l border-gray-200 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
-          {products?.map((product, index) => (
-            <Product key={index} product={product} />
+          {products?.map((product) => (
+            <Product key={product._id} product={product} />
           ))}
         </div>
         <div className="flex justify-center">

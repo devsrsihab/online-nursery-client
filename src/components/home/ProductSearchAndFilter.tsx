@@ -1,4 +1,4 @@
-const ProductSearchAndFilter = () => {
+const ProductSearchAndFilter = ({ setCategory }: { setCategory: any }) => {
   return (
     <div className="mb-10 w-full">
       <div className="flex flex-col">
@@ -8,11 +8,20 @@ const ProductSearchAndFilter = () => {
               <div className="w-full md:w-1/5 mb-4 md:mb-0">
                 <select
                   id="manufacturer"
+                  onChange={(e) => setCategory(e.target.value)}
                   className="block w-full rounded-md border border-gray-100 bg-gray-100 py-3 px-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 >
-                  <option>Select Category</option>
-                  <option>Starbucks</option>
-                  <option>Hilti</option>
+                  <option value="" disabled selected>
+                    Select Category
+                  </option>
+                  <option value="Hibiscus">Hibiscus</option>
+                  <option value="Hosta">Hosta</option>
+                  <option value="Lavender">Lavender</option>
+                  <option value="Grass">Grass</option>
+                  <option value="Daylily">Daylily</option>
+                  <option value="Clematis">Clematis</option>
+                  <option value="Rose">Rose</option>
+                  <option value="Peony">Peony</option>
                 </select>
               </div>
               <div className="relative flex w-full md:w-4/5 items-center">

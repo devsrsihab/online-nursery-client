@@ -26,12 +26,6 @@ const ProductTable = () => {
   const { products } = data?.data ?? [];
   const { totalItems } = data?.data ?? 10;
 
-
-
-  if (isLoading) {
-    console.log("loading data...");
-  }
-
   return (
     <div className="bg-[#f3f4f6] px-4 py-12 sm:px-6 lg:px-8 sm:py-16 lg:py-24">
       {/* confirmation delete modal */}
@@ -96,7 +90,7 @@ const ProductTable = () => {
                       scope="col"
                       className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                     >
-                      Image
+                      Image sdfdsf
                     </th>
 
                     <th

@@ -14,7 +14,6 @@ const ViewProductModal = ({
   productId,
 }: UpdateModalProps) => {
   const { data } = useEditProductsQuery(productId);
-  console.log("edit product data", data);
 
   return (
     <Transition.Root show={openViewForm} as={Fragment}>

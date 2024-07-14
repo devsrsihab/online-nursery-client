@@ -1,7 +1,8 @@
 import { TProduct } from "../../../types";
+import CustomRating from "../../shared/Rating";
 
 const Product = ({ product }: { product: TProduct }) => {
-  const {  title, price, rating, image } = product;
+  const { title, price, rating, image } = product;
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-3 px-3 sm:py-6 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -14,10 +15,12 @@ const Product = ({ product }: { product: TProduct }) => {
               />
             </div>
             <div className="relative mt-4">
-              <a >
+              <a>
                 <h3 className="text-sm font-medium text-gray-900">{title}</h3>
               </a>
-              <p className="mt-1 text-sm text-gray-500">{rating}</p>
+              <p className="mt-1 text-sm text-gray-500">
+                <CustomRating rating={rating} />
+              </p>
             </div>
             <div className="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
               <div
@@ -30,10 +33,7 @@ const Product = ({ product }: { product: TProduct }) => {
             </div>
           </div>
           <div className="mt-6">
-            <a
-              
-              className="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200"
-            >
+            <a className="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200">
               Add to Cart
             </a>
           </div>

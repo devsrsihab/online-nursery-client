@@ -3,17 +3,28 @@ import { baseApi } from "../../api/baseApi";
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      query: ({ page, limit, category }) => {
-        
+      query: ({ page, limit, category, searchTerm }) => {
+        // Construct base URL
+        const baseUrl = `/products?page=${page}&limit=${limit}`;
+
+        // Construct query parameters based on provided values
+        const params = new URLSearchParams();
+
         if (category) {
-          return {
-            url: `/products?page=${page}&limit=${limit}&category=${category}`,
-            method: "GET",
-          };
+          params.append("category", category);
+          console.log("category form rkt route", category);
         }
 
+        if (searchTerm) {
+          params.append("searchTerm", searchTerm);
+        }
+
+        // Combine base URL with query parameters
+        const queryString = params.toString();
+        const finalUrl = queryString ? `${baseUrl}&${queryString}` : baseUrl;
+
         return {
-          url: `/products?page=${page}&limit=${limit}`,
+          url: finalUrl,
           method: "GET",
         };
       },

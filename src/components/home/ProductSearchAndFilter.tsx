@@ -1,9 +1,27 @@
-const ProductSearchAndFilter = ({ setCategory }: { setCategory: any }) => {
+import { useRef } from "react";
+
+type ProductFilterProps = {
+  setCategory: (page: string) => void;
+  setSearchTerm: (page: string) => void;
+};
+
+const ProductSearchAndFilter = ({
+  setCategory,
+  setSearchTerm,
+}: ProductFilterProps) => {
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    searchInputRef.current && setSearchTerm(searchInputRef.current.value);
+    // console.log(searchInputRef.current?.value);
+  };
+
   return (
     <div className="mb-10 w-full">
       <div className="flex flex-col">
         <div className="rounded-xl border border-gray-200 bg-white p-6 shadow">
-          <form>
+          <form onSubmit={handleSearch}>
             <div className="filter_div flex flex-col md:flex-row items-center justify-between">
               <div className="w-full md:w-1/5 mb-4 md:mb-0">
                 <select
@@ -43,6 +61,7 @@ const ProductSearchAndFilter = ({ setCategory }: { setCategory: any }) => {
                 <input
                   type="name"
                   name="search"
+                  ref={searchInputRef}
                   className="h-12 w-full cursor-text rounded-md border border-gray-100 bg-gray-100 py-4 pr-40 pl-12 shadow-sm outline-none  focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                   placeholder="Search by name, type, manufacturer, etc"
                 />
@@ -52,7 +71,10 @@ const ProductSearchAndFilter = ({ setCategory }: { setCategory: any }) => {
               <button className="rounded-lg bg-gray-200 px-8 py-2 font-medium text-gray-700 outline-none hover:opacity-80 focus:ring">
                 Reset
               </button>
-              <button className="rounded-lg bg-primary px-8 py-2 font-medium text-white outline-none hover:opacity-80 focus:ring">
+              <button
+                type="submit"
+                className="rounded-lg bg-primary px-8 py-2 font-medium text-white outline-none hover:opacity-80 focus:ring"
+              >
                 Search
               </button>
             </div>

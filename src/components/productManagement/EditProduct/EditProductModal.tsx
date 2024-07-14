@@ -65,7 +65,7 @@ const EditProductModal = ({
 
   return (
     <Transition.Root show={openEditForm} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpenEditForm}>
+      <Dialog as="div" className="relative z-[999]" onClose={setOpenEditForm}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-200"
@@ -127,6 +127,7 @@ const EditProductModal = ({
                           <div className="mb-5 text-left">
                             <input
                               type="number"
+                              step="any"
                               className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                               placeholder="Price"
                               {...register("price", {
@@ -178,6 +179,7 @@ const EditProductModal = ({
                           <div className="mb-5 text-left">
                             <input
                               type="number"
+                              step="any"
                               min={1}
                               className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                               placeholder="Rating"

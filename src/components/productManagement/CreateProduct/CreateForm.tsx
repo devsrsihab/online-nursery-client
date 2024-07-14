@@ -66,6 +66,7 @@ const CreateForm = ({ setOpenForm }: CreateFormProps) => {
                 <div className="mb-5 text-left">
                   <input
                     type="number"
+                    step="any"
                     className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                     placeholder="Price"
                     {...register("price", { required: "Price is required." })}
@@ -113,6 +114,7 @@ const CreateForm = ({ setOpenForm }: CreateFormProps) => {
                 <div className="mb-5 text-left">
                   <input
                     type="number"
+                    step="any"
                     min={1}
                     className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
                     placeholder="Rating"

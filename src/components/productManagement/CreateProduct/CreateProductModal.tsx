@@ -9,7 +9,7 @@ const CreateProductModal = ({
 }: TOpenProps<"openForm">) => {
   return (
     <Transition.Root  show={openForm} as={Fragment}>
-      <Dialog as="div" className="relative z-[200]" onClose={setOpenForm}>
+      <Dialog as="div" className="relative z-[999]" onClose={setOpenForm}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-200"

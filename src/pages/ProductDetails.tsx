@@ -1,100 +1,65 @@
 import { Tab } from "@headlessui/react";
-import { StarIcon } from "@heroicons/react/20/solid";
-import { HeartIcon } from "@heroicons/react/24/outline";
-
-const product = {
-  name: "Zip Tote Basket",
-  price: "$140",
-  rating: 4,
-  images: [
-    {
-      id: 1,
-      name: "Angled view",
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-  ],
-  description: `
-    <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
-  `,
-};
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import Loader from "../components/shared/Loader";
+import { useEditProductsQuery } from "../redux/features/product/productApi";
+import { useParams } from "react-router-dom";
+import CustomRating from "../components/shared/Rating";
 
 const ProductDetails = () => {
+  const { id } = useParams<{ id: string }>();
+  const { data, isLoading } = useEditProductsQuery(id);
+
+  const product = data?.data || [];
+  console.log(product);
+
+  if (isLoading) {
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
   return (
-    <div className="bg-white">
+    <div className="bg-white mt-[8%]">
       <div className="mx-auto max-w-2xl py-10 px-4 sm:py-16  sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
           <Tab.Group as="div" className="flex flex-col-reverse">
-            {/* Image selector */}
-            <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
-              <Tab.List className="grid grid-cols-4 gap-6">
-                {product.images.map((image) => (
-                  <Tab
-                    key={image.id}
-                    className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
-                  >
-                    {({ selected }) => (
-                      <>
-                        <span className="sr-only"> {image.name} </span>
-                        <span className="absolute inset-0 overflow-hidden rounded-md">
-                          <img
-                            src={image.src}
-                            alt=""
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </span>
-                        <span
-                          className={classNames(
-                            selected ? "ring-indigo-500" : "ring-transparent",
-                            "pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2"
-                          )}
-                          aria-hidden="true"
-                        />
-                      </>
-                    )}
-                  </Tab>
-                ))}
-              </Tab.List>
-            </div>
-
-            <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
-              {product.images.map((image) => (
-                <Tab.Panel key={image.id}>
+            <Tab.Panels className="w-full">
+              <Tab.Panel>
+                <div className="relative w-full">
                   <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="h-full w-full object-cover object-center sm:rounded-lg"
+                    src={product?.image}
+                    alt={product?.name}
+                    className="w-full h-64 sm:h-80 lg:h-96 object-contain object-center sm:rounded-lg"
                   />
-                </Tab.Panel>
-              ))}
+                </div>
+              </Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
 
-          {/* Product info */}
+          {/* Product? info */}
           <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              {product.name}
+              {product?.title}
             </h1>
 
             <div className="mt-3">
-              <h2 className="sr-only">Product information</h2>
+              <h2 className="sr-only">Product? information</h2>
               <p className="text-3xl tracking-tight text-gray-900">
-                {product.price}
+                {product?.price}
               </p>
             </div>
 
             <div className="mt-3 flex gap-2">
               <h2 className="sr-only">Product Category</h2>
-              <p className="text-lg tracking-tight text-gray-900">
-                Category:
-              </p>
+              <p className="text-lg tracking-tight text-gray-900">Category:</p>
               <p className="text-lg font-semibold tracking-tight text-gray-900">
-                Apple Trees
+                {product?.category}
               </p>
             </div>
 
@@ -103,20 +68,9 @@ const ProductDetails = () => {
               <h3 className="sr-only">Reviews</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
-                    <StarIcon
-                      key={rating}
-                      className={classNames(
-                        product.rating > rating
-                          ? "text-indigo-500"
-                          : "text-gray-300",
-                        "h-5 w-5 flex-shrink-0"
-                      )}
-                      aria-hidden="true"
-                    />
-                  ))}
+                  <CustomRating rating={product?.rating} />
                 </div>
-                <p className="sr-only">{product.rating} out of 5 stars</p>
+                <p className="sr-only">{product?.rating} out of 5 stars</p>
               </div>
             </div>
 
@@ -125,7 +79,7 @@ const ProductDetails = () => {
 
               <div
                 className="space-y-6 text-base text-gray-700"
-                dangerouslySetInnerHTML={{ __html: product.description }}
+                dangerouslySetInnerHTML={{ __html: product?.description }}
               />
             </div>
 
@@ -134,18 +88,7 @@ const ProductDetails = () => {
                 type="submit"
                 className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
               >
-                Add to bag
-              </button>
-
-              <button
-                type="button"
-                className="ml-4 flex items-center justify-center rounded-md py-3 px-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-              >
-                <HeartIcon
-                  className="h-6 w-6 flex-shrink-0"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Add to favorites</span>
+                Add to Cart
               </button>
             </div>
           </div>

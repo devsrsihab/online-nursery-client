@@ -8,19 +8,25 @@ import { useGetAllProductsQuery } from "../../redux/features/product/productApi"
 import { TProduct } from "../../types";
 import Loader from "../shared/Loader";
 import ViewProductModal from "./ViewProduct/ViewProductModal";
+import Pagination from "../shared/Pagination";
 
 const ProductTable = () => {
   const [confirmDeleteModal, setConfirmDeleteModal] = useState(false);
   const [openForm, setOpenForm] = useState(false);
   const [openEditForm, setOpenEditForm] = useState(false);
   const [openViewForm, setOpenViewForm] = useState(false);
-  const [productId, setProductId] = useState<string | null>(
-    null
-  );
+  const [productId, setProductId] = useState<string | null>(null);
+  const [pagenumber, setPageNumber] = useState<number | null>(null);
+  const [itemlimit, setItemlimit] = useState<number | null>(null);
 
-  const { data, isLoading, error } = useGetAllProductsQuery(undefined);
-  const products = data?.data ?? [];
-  // console.log(products);
+  const { data, isLoading, error } = useGetAllProductsQuery({
+    page: pagenumber,
+    limit: itemlimit,
+  });
+  const { products } = data?.data ?? [];
+  const { totalItems } = data?.data ?? 10;
+
+
 
   if (isLoading) {
     console.log("loading data...");
@@ -74,6 +80,12 @@ const ProductTable = () => {
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-50">
                   <tr>
+                    <th
+                      scope="col"
+                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                    >
+                      ID
+                    </th>
                     <th
                       scope="col"
                       className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
@@ -148,8 +160,11 @@ const ProductTable = () => {
                       </td>
                     </tr>
                   ) : (
-                    products.map((product: TProduct, index: number) => (
+                    products?.map((product: TProduct, index: number) => (
                       <tr key={index}>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                          {++index}
+                        </td>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                           {product.title}
                         </td>
@@ -213,6 +228,14 @@ const ProductTable = () => {
                   )}
                 </tbody>
               </table>
+
+              <div className="flex justify-center">
+                <Pagination
+                  setPageNumber={setPageNumber}
+                  setItemlimit={setItemlimit}
+                  totalItems={totalItems}
+                />
+              </div>
             </div>
           </div>
         </div>

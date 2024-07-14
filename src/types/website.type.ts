@@ -31,3 +31,10 @@ export type TOpenProps<K extends string> = {
 export type CreateFormProps = {
   setOpenForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+export type TSetStatePageProps = React.Dispatch<
+  React.SetStateAction<number | null>
+>;
+export type TSetStateItemLimitProps = React.Dispatch<
+  React.SetStateAction<number | null>
+>;

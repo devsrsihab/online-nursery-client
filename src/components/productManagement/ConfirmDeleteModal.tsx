@@ -20,6 +20,8 @@ const ConfirmDeleteModal = ({
 }: ConfirmDeleteModalProps) => {
   const [deleteProducts] = useDeleteProductsMutation();
 
+  console.log(productId);
+
   const handleDelete = (id: string) => {
     deleteProducts(id);
     setConfirmDeleteModal(false);

@@ -1,12 +1,68 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { TOpenProps } from "../../../types";
+import { TProduct } from "../../../types";
+import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  useEditProductsQuery,
+  useUpdateProductsMutation,
+} from "../../../redux/features/product/productApi";
+import { toast } from "sonner";
+
+interface UpdateModalProps {
+  openEditForm: boolean;
+  setOpenEditForm: (value: boolean) => void;
+  productId: string;
+}
 
 const EditProductModal = ({
   openEditForm,
   setOpenEditForm,
-}: TOpenProps<"openEditForm">) => {
+  productId,
+}: UpdateModalProps) => {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<TProduct>();
+
+  const { data } = useEditProductsQuery(productId);
+  const [updateProducts] = useUpdateProductsMutation();
+
+  // set form value
+  useEffect(() => {
+    const product = data?.data ?? [];
+
+    setValue("title", product.title);
+    setValue("price", product.price);
+    setValue("description", product.description);
+    setValue("category", product.category);
+    setValue("image", product.image);
+    setValue("brand", product.brand);
+    setValue("rating", product.rating);
+    setValue("stock", product.stock);
+  }, [data, setValue]);
+
+  // handle edit product
+  const handleEditProduct: SubmitHandler<TProduct> = async (data) => {
+    const payload = {
+      ...data,
+      price: Number(data.price),
+      rating: Number(data.rating),
+      stock: Number(data.stock),
+    };
+    const id = productId;
+    try {
+      const response = await updateProducts({ id, payload });
+      toast.success("Product has been Updated");
+      setOpenEditForm(false);
+      console.log("Update response:", response);
+    } catch (error) {
+      console.error("Failed to update product:", error);
+    }
+  };
+
   return (
     <Transition.Root show={openEditForm} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpenEditForm}>
@@ -49,28 +105,170 @@ const EditProductModal = ({
                       Edit Product
                     </Dialog.Title>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Consequatur amet labore.
-                      </p>
+                      <form onSubmit={handleSubmit(handleEditProduct)}>
+                        <div className="space-y-5">
+                          <div className="mb-5 text-left">
+                            <input
+                              type="text"
+                              className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                              placeholder="Title"
+                              {...register("title", {
+                                required: "Title is required.",
+                              })}
+                            />
+                            {errors.title &&
+                              typeof errors.title.message === "string" && (
+                                <span className="text-red-500 text-xs italic">
+                                  {errors.title.message}
+                                </span>
+                              )}
+                          </div>
+
+                          <div className="mb-5 text-left">
+                            <input
+                              type="number"
+                              className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                              placeholder="Price"
+                              {...register("price", {
+                                required: "Price is required.",
+                              })}
+                            />
+                            {errors.price &&
+                              typeof errors.price.message === "string" && (
+                                <span className="text-red-500 text-xs italic">
+                                  {errors.price.message}
+                                </span>
+                              )}
+                          </div>
+
+                          <div className="mb-5 text-left">
+                            <textarea
+                              className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                              placeholder="Description"
+                              {...register("description", {
+                                required: "Description is required.",
+                              })}
+                            />
+                            {errors.description &&
+                              typeof errors.description.message ===
+                                "string" && (
+                                <span className="text-red-500 text-xs italic">
+                                  {errors.description.message}
+                                </span>
+                              )}
+                          </div>
+
+                          <div className="mb-5 text-left">
+                            <input
+                              type="text"
+                              className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                              placeholder="Category"
+                              {...register("category", {
+                                required: "Category is required.",
+                              })}
+                            />
+                            {errors.category &&
+                              typeof errors.category.message === "string" && (
+                                <span className="text-red-500 text-xs italic">
+                                  {errors.category.message}
+                                </span>
+                              )}
+                          </div>
+
+                          <div className="mb-5 text-left">
+                            <input
+                              type="number"
+                              min={1}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                              placeholder="Rating"
+                              {...register("rating", {
+                                required: "Rating is required.",
+                              })}
+                            />
+                            {errors.rating &&
+                              typeof errors.rating.message === "string" && (
+                                <span className="text-red-500 text-xs italic">
+                                  {errors.rating.message}
+                                </span>
+                              )}
+                          </div>
+
+                          <div className="mb-5 text-left">
+                            <input
+                              type="text"
+                              className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                              placeholder="Image URL"
+                              {...register("image", {
+                                required: "Image URL is required.",
+                                pattern: {
+                                  value:
+                                    /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}([/\w .-]*)*\/?$/,
+                                  message: "Please enter a valid image URL",
+                                },
+                              })}
+                            />
+                            {errors.image &&
+                              typeof errors.image.message === "string" && (
+                                <span className="text-red-500 text-xs italic">
+                                  {errors.image.message}
+                                </span>
+                              )}
+                          </div>
+
+                          <div className="mb-5 text-left">
+                            <input
+                              type="text"
+                              className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                              placeholder="Brand"
+                              {...register("brand", {
+                                required: "Brand is required.",
+                              })}
+                            />
+                            {errors.brand &&
+                              typeof errors.brand.message === "string" && (
+                                <span className="text-red-500 text-xs italic">
+                                  {errors.brand.message}
+                                </span>
+                              )}
+                          </div>
+
+                          <div className="mb-5 text-left">
+                            <input
+                              type="number"
+                              className="bg-gray-50 border border-gray-300 text-gray-900 outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+                              placeholder="Stock"
+                              {...register("stock", {
+                                required: "Stock is required.",
+                              })}
+                            />
+                            {errors.stock &&
+                              typeof errors.stock.message === "string" && (
+                                <span className="text-red-500 text-xs italic">
+                                  {errors.stock.message}
+                                </span>
+                              )}
+                          </div>
+                        </div>
+
+                        <div className="mt-5 justify-end sm:mt-6 flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:space-x-3">
+                          <button
+                            type="button"
+                            className="inline-flex justify-center w-full sm:w-auto rounded-md border border-transparent bg-red-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 sm:text-sm"
+                            onClick={() => setOpenEditForm(false)}
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="submit"
+                            className="inline-flex justify-center w-full sm:w-auto rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
+                            // onClick={() => setOpenEditForm(false)}
+                          >
+                            Update
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
-                </div>
-                <div className="mt-5 justify-end sm:mt-6 flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:space-x-3">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center w-full sm:w-auto rounded-md border border-transparent bg-red-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={() => setOpenEditForm(false)}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex justify-center w-full sm:w-auto rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={() => setOpenEditForm(false)}
-                  >
-                    Create
-                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

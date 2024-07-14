@@ -23,9 +23,14 @@ const CreateForm = ({ setOpenForm }: CreateFormProps) => {
       rating: Number(payload.rating),
       stock: Number(payload.stock),
     };
-    addProducts(productData);
-    toast.success("Product has been created");
 
+    try {
+      const response = await addProducts(productData);
+      toast.success("Product has been created");
+      console.log("Create response:", response);
+    } catch (error) {
+      console.error("Failed to Create product:", error);
+    }
   };
 
   return (

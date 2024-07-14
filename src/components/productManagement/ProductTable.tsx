@@ -15,6 +15,10 @@ const ProductTable = () => {
   const [productIdToDelete, setProductIdToDelete] = useState<string | null>(
     null
   );
+  const [productIdToUpdate, setProductIdToUpdate] = useState<string | null>(
+    null
+  );
+
   const { data, isLoading, error } = useGetAllProductsQuery(undefined);
   const products = data?.data ?? [];
   // console.log(products);
@@ -36,6 +40,7 @@ const ProductTable = () => {
       <EditProductModal
         openEditForm={openEditForm}
         setOpenEditForm={setOpenEditForm}
+        productId={productIdToUpdate ? productIdToUpdate : ""}
       />
 
       <div className="sm:flex sm:items-center">
@@ -172,7 +177,10 @@ const ProductTable = () => {
                         </td>
                         <td className="flex items-center gap-3 relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                           <button
-                            onClick={() => setOpenEditForm(true)}
+                            onClick={() => {
+                              setOpenEditForm(true);
+                              setProductIdToUpdate(product._id);
+                            }}
                             className="text-green-600 text-xl hover:text-green-900"
                           >
                             <BsPencilSquare />

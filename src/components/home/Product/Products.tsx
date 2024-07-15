@@ -21,7 +21,7 @@ const Products = () => {
   });
 
   const products: TProduct[] = data?.data?.products || [];
-  const totalItems = data?.data?.totalItems || 0; // Updated to use API response
+  const totalItems = data?.data?.totalItems || 0; 
 
   return (
     <div className="bg-white py-24">
@@ -52,7 +52,7 @@ const Products = () => {
           <Pagination
             setPageNumber={setPageNumber}
             setItemlimit={setItemlimit}
-            totalItems={totalItems} // Use actual total items from API
+            totalItems={totalItems} 
           />
         </div>
       </div>

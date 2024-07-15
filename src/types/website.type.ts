@@ -8,6 +8,7 @@ export type TProduct = {
   image: string;
   brand: string;
   stock: number;
+  quantity?: number;
 };
 
 export type TSectionTitleProps = {

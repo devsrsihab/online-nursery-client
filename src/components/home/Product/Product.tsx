@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { TProduct } from "../../../types";
 import CustomRating from "../../shared/Rating";
+import { useAppDispatch } from "../../../redux/hooks";
+import { addToCart } from "../../../redux/features/product/cartSlice";
 
 const Product = ({ product }: { product: TProduct }) => {
-  const {_id, title, price, rating, image } = product;
+  const { _id, title, price, rating, image } = product;
+  const dispatch = useAppDispatch();
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-3 px-3 sm:py-6 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -36,7 +40,10 @@ const Product = ({ product }: { product: TProduct }) => {
             </div>
           </Link>
           <div className="mt-6">
-            <a className="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200">
+            <a
+              onClick={() => dispatch(addToCart(product))}
+              className="relative cursor-pointer flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200"
+            >
               Add to Cart
             </a>
           </div>

@@ -3,13 +3,14 @@ import Loader from "../components/shared/Loader";
 import { useEditProductsQuery } from "../redux/features/product/productApi";
 import { useParams } from "react-router-dom";
 import CustomRating from "../components/shared/Rating";
+import { useAppDispatch } from "../redux/hooks";
+import { addToCart } from "../redux/features/product/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading } = useEditProductsQuery(id);
-
   const product = data?.data || [];
-  console.log(product);
+  const dispatch = useAppDispatch();
 
   if (isLoading) {
     return (
@@ -18,6 +19,7 @@ const ProductDetails = () => {
       </div>
     );
   }
+
 
   if (!product) {
     return <div>Product not found</div>;
@@ -85,7 +87,8 @@ const ProductDetails = () => {
 
             <div className="sm:flex-col1 mt-10 flex">
               <button
-                type="submit"
+                type="button"
+                onClick={() => dispatch(addToCart(product))}
                 className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
               >
                 Add to Cart

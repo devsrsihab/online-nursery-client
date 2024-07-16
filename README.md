@@ -45,7 +45,7 @@ This project is an online tree nursery website built using React, Redux, TypeScr
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/online-tree-nursery.git
+   git clone git@github.com:devsrsihab/online-nursery-client.git
    cd online-tree-nursery
    ```
 

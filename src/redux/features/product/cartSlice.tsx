@@ -1,7 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "sonner";
+import { TProduct } from "../../../types";
 
-const initialState = {
+interface CartItem extends TProduct {
+  quantity: number;
+}
+
+interface CartState {
+  cart: CartItem[];
+  totalPrice: number;
+  totalQuantity: number;
+}
+
+const initialState: CartState = {
   cart: [],
   totalPrice: 0,
   totalQuantity: 0,
@@ -11,7 +22,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action) => {
+    addToCart: (state, action: PayloadAction<CartItem>) => {
       const itemInCart = state.cart.find(
         (item) => item._id === action.payload._id
       );
@@ -58,7 +69,7 @@ export const cartSlice = createSlice({
       state.totalQuantity = totals.totalQuantity;
     },
 
-    removeFromCart: (state, action) => {
+    removeFromCart: (state, action: PayloadAction<{ _id: string }>) => {
       state.cart = state.cart.filter((item) => item._id !== action.payload._id);
       cartSlice.caseReducers.getCartTotal(state);
     },

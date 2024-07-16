@@ -8,6 +8,14 @@ const Product = ({ product }: { product: TProduct }) => {
   const { _id, title, price, rating, image } = product;
   const dispatch = useAppDispatch();
 
+  const handleAddToCart = () => {
+    const cartItem = {
+      ...product,
+      quantity: 1,
+    };
+    dispatch(addToCart(cartItem));
+  };
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-3 px-3 sm:py-6 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -41,7 +49,7 @@ const Product = ({ product }: { product: TProduct }) => {
           </Link>
           <div className="mt-6">
             <a
-              onClick={() => dispatch(addToCart(product))}
+              onClick={handleAddToCart}
               className="relative cursor-pointer flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200"
             >
               Add to Cart
@@ -52,4 +60,5 @@ const Product = ({ product }: { product: TProduct }) => {
     </div>
   );
 };
+
 export default Product;

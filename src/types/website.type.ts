@@ -8,7 +8,7 @@ export type TProduct = {
   image: string;
   brand: string;
   stock: number;
-  quantity?: number;
+  quantity?: number | null | undefined;
 };
 
 export type TSectionTitleProps = {
@@ -39,3 +39,13 @@ export type TSetStatePageProps = React.Dispatch<
 export type TSetStateItemLimitProps = React.Dispatch<
   React.SetStateAction<number | null>
 >;
+export type  RouteItem =  {
+  path?: string;
+  element: React.ReactNode;
+  children?: RouteItem[];
+}
+
+export type  GeneratedRoute = {
+  path: string;
+  element: React.ReactNode;
+}

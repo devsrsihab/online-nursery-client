@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+# Online Tree Nursery Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Project Screenshot](https://i.ibb.co/r5Y8m22/Screenshot-1.png)
 
-Currently, two official plugins are available:
+[Live Demo](https://client-4.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Description
 
-## Expanding the ESLint configuration
+This project is an online tree nursery website built using React, Redux, TypeScript, and Headless UI. The website provides a seamless experience for users to browse, manage, and purchase products with various features like product management CRUD operations, cart management, filtering, pagination, sorting, and payment integration.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Product Management:**
+  - Create, read, update, and delete (CRUD) operations for products.
+- **Cart Management:**
+  - Add products to the cart, update quantities, and remove items using Redux for state management.
+- **Filtering and Sorting:**
+  - Filter products by categories and other criteria.
+  - Sort products by price, rating, and other parameters.
+- **Pagination:**
+  - Navigate through products with pagination.
+- **Payment Integration:**
+  - Secure payment processing with Stripe.
+- **Responsive Design:**
+  - Mobile and desktop views for an optimal user experience.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Technologies Used
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **React:** For building the user interface.
+- **Redux:** For state management.
+- **TypeScript:** For type safety and better development experience.
+- **Headless UI:** For accessible and customizable UI components.
+- **Stripe:** For handling payments.
+- **Vercel:** For hosting the live demo.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or above)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/online-tree-nursery.git
+   cd online-tree-nursery
+   ```
+
+- ```npm start ```
+- ```yarn start```
+
+- ```npm run build```
+- ```yarn build```

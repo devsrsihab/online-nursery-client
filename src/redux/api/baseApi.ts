@@ -8,7 +8,7 @@ import {
 } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:7000/api/v1",
+  baseUrl: "https://server-a4.vercel.app/api/v1",
   credentials: "include",
 });
 

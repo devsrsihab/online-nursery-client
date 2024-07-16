@@ -101,6 +101,18 @@ const NavMenu = ({ isOpenMenu }: { isOpenMenu: boolean }) => {
                 Product Managment
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/carts"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block py-2 px-3 bg-primary  text-white rounded   md:p-0"
+                    : "block py-2 px-3 bg-white text-gray-900  rounded  md:p-0"
+                }
+              >
+                Cart
+              </NavLink>
+            </li>
           </ul>
         </div>
       </Transition>

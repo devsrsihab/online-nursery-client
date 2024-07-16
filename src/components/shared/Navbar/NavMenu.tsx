@@ -31,7 +31,7 @@ const NavMenu = ({ isOpenMenu }: { isOpenMenu: boolean }) => {
                   : "block transition-all duration-300 py-2 px-3 text-gray-500 rounded  md:border-0 md:p-0 "
               }
             >
-              Shop
+              Products
             </NavLink>
           </li>
           <li>
@@ -86,7 +86,7 @@ const NavMenu = ({ isOpenMenu }: { isOpenMenu: boolean }) => {
                     : "block py-2 px-3 bg-white text-gray-900  rounded  md:p-0"
                 }
               >
-                Shop
+                Products
               </NavLink>
             </li>
             <li>

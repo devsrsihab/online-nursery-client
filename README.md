@@ -2,7 +2,7 @@
 
 ![Project Screenshot](https://i.ibb.co/r5Y8m22/Screenshot-1.png)
 
-[Live Demo](https://client-4.vercel.app/)
+[Live Demo](https://client-4.vercel.app/){:target="\_blank"}
 
 ## Description
 
@@ -48,8 +48,8 @@ This project is an online tree nursery website built using React, Redux, TypeScr
    cd online-tree-nursery
    ```
 
-- ```npm start ```
-- ```yarn start```
+- `npm start `
+- `yarn start`
 
-- ```npm run build```
-- ```yarn build```
+- `npm run build`
+- `yarn build`

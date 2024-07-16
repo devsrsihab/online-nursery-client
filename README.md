@@ -2,7 +2,8 @@
 
 ![Project Screenshot](https://i.ibb.co/r5Y8m22/Screenshot-1.png)
 
-[Live Demo](https://client-4.vercel.app/){:target="\_blank"}
+<a href="https://client-4.vercel.app/" target="_blank">Live Demo</a>
+
 
 ## Description
 

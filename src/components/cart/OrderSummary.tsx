@@ -1,4 +1,16 @@
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { getCartTotal } from "../../redux/features/product/cartSlice";
+import { Link } from "react-router-dom";
+
 const OrderSummary = () => {
+  const dispatch = useAppDispatch();
+  const { totalPrice } = useAppSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [dispatch]);
+
   return (
     <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
       <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
@@ -28,15 +40,15 @@ const OrderSummary = () => {
           </div>
           <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2">
             <dt className="text-base font-bold text-gray-900">Total</dt>
-            <dd className="text-base font-bold text-gray-900">$8,191.00</dd>
+            <dd className="text-base font-bold text-gray-900">${totalPrice}</dd>
           </dl>
         </div>
-        <a
-          href="#"
-          className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300"
+        <Link
+          to="/checkout"
+          className="flex w-full bg-primary items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300"
         >
           Proceed to Checkout
-        </a>
+        </Link>
         <div className="flex items-center justify-center gap-2">
           <span className="text-sm font-normal text-gray-500"> or </span>
           <a
